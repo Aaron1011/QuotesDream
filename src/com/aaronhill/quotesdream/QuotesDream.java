@@ -1,7 +1,13 @@
 package com.aaronhill.quotesdream;
 
+
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import android.os.Bundle;
@@ -18,9 +24,21 @@ import com.aaronhill.quotesdream.Quote;
 public class QuotesDream extends DreamService {
 	Quote newQuote;
 	UpdateQuoteTask task;
+
+	List<Quote> QUOTES = new ArrayList<Quote>();
+
+
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
+		QUOTES.add(new Quote(getBaseContext(), "To be or not to be, that is the question. ", "William Shakespeare"));
+		QUOTES.add(new Quote(getBaseContext(), "As far as the laws of mathematics refer to reality, they are not certain, and as far as they are certain, they do not refer to reality. ", "Alert Einstein"));
+		QUOTES.add(new Quote(getBaseContext(), "The economy depends about as much on economists as the weather does on weather forecasters. ", "Jean-Paul Kauffmann"));
+
+		for (Quote quote: QUOTES) {
+			quote.save();
+		}
+
 
 		// Exit dream upon user touch
 		setInteractive(true);
@@ -31,11 +49,11 @@ public class QuotesDream extends DreamService {
 
 
 
-		Quote quote = new Quote(getBaseContext(), "This is a blah", "Aaron");
+		/*Quote quote = new Quote(getBaseContext(), "This is a blah", "Aaron");
 		quote.save();
 
 		Quote quote2 = new Quote(getBaseContext(), "This is a second quote", "Anonymous");
-		quote2.save();
+		quote2.save();*/
 	}
 
 	@Override
