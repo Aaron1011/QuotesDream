@@ -55,8 +55,6 @@ public class QuotesDream extends DreamService {
 	public void onDetachedFromWindow() {
 		super.onDetachedFromWindow();
 		Quote.deleteAll(Quote.class);
-	}
-	public void onDreamingStopped() {
 		task.cancel(true);
 	}
 }

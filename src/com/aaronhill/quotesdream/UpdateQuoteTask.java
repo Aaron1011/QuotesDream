@@ -21,18 +21,17 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					return null;
 				}
 			}
 		}
-
-		//return null;
 	}
 
 	protected void onProgressUpdate(Quote... values) {
 		Quote quote = values[0];
+		Log.d("Progress", "Hi");
 
-		textView.setText(quote.body);
+		textView.setText(quote.body + "\n--" + quote.author);
 	}
 
 }
