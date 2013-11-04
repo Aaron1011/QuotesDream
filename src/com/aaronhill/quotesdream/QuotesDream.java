@@ -17,6 +17,7 @@ import com.aaronhill.quotesdream.Quote;
 
 public class QuotesDream extends DreamService {
 	Quote newQuote;
+	UpdateQuoteTask task;
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
@@ -44,9 +45,8 @@ public class QuotesDream extends DreamService {
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 		final Iterator iterator = newQuotes.iterator();
 		int delay = 2000;
-		new UpdateQuoteTask().execute(iterator, textView);
-
-
+		task = new UpdateQuoteTask();
+		task.execute(newQuotes, textView);
 
 
 	}
@@ -55,5 +55,8 @@ public class QuotesDream extends DreamService {
 	public void onDetachedFromWindow() {
 		super.onDetachedFromWindow();
 		Quote.deleteAll(Quote.class);
+	}
+	public void onDreamingStopped() {
+		task.cancel(true);
 	}
 }
