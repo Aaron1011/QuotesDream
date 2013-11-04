@@ -21,7 +21,7 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 				publishProgress(quote);
 				Log.d("Quote", quote.body);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					return null;
 				}
