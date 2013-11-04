@@ -8,10 +8,11 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="0.46"
         android:gravity="center"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="100sp" />
+        android:textSize="50sp" />
 
 </FrameLayout>
 
