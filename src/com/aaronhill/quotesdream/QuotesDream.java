@@ -2,14 +2,21 @@ package com.aaronhill.quotesdream;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Parcelable;
 import android.service.dreams.DreamService;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.aaronhill.quotesdream.GetQuotesTask;
 import com.aaronhill.quotesdream.Quote;
 
 public class QuotesDream extends DreamService {
+	Quote newQuote;
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
@@ -23,17 +30,30 @@ public class QuotesDream extends DreamService {
 
 
 
-		Quote quote = new Quote(getBaseContext(), "This is a quote", "Aaron");
+		Quote quote = new Quote(getBaseContext(), "This is a blah", "Aaron");
 		quote.save();
-		List<Quote> newQuotes = Quote.find(Quote.class, "author = ?", "Aaron");
-		Quote newQuote = newQuotes.get(0);
+
+		Quote quote2 = new Quote(getBaseContext(), "This is a second quote", "Anonymous");
+		quote2.save();
+	}
+
+	@Override
+	public void onDreamingStarted() {
+
+		List<Quote> newQuotes = Quote.listAll(Quote.class);
+		final TextView textView = (TextView) findViewById(R.id.textView1);
+		final Iterator iterator = newQuotes.iterator();
+		int delay = 2000;
+		new UpdateQuoteTask().execute(iterator, textView);
 
 
-		TextView textView = (TextView) findViewById(R.id.textView1);
-		textView.setText(quote.body + "\n--" + quote.author);
 
+
+	}
+
+	@Override
+	public void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
 		Quote.deleteAll(Quote.class);
-
-
 	}
 }
