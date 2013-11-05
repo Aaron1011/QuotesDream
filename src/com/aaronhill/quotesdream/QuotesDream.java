@@ -37,6 +37,7 @@ public class QuotesDream extends DreamService {
 		for (Quote quote: QUOTES) {
 			quote.save();
 		}
+		new GetQuotesTask(getBaseContext()).execute(20);
 
 
 		// Exit dream upon user touch
