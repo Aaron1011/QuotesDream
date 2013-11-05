@@ -7,7 +7,6 @@ import com.aaronhill.quotesdream.Quote;
 import android.os.AsyncTask;
 import android.text.Spannable;
 import android.text.style.AbsoluteSizeSpan;
-import android.util.Log;
 import android.widget.TextView;
 
 public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
@@ -19,7 +18,6 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 		while (true) {
 			for (Quote quote: (List<Quote>) quotes) {
 				publishProgress(quote);
-				Log.d("Quote", quote.body);
 				try {
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
@@ -31,7 +29,6 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 
 	protected void onProgressUpdate(Quote... values) {
 		Quote quote = values[0];
-		Log.d("Progress", "Hi");
 
 		textView.setText(quote.body + "\n--" + quote.author, TextView.BufferType.SPANNABLE);
 		Spannable str = (Spannable) textView.getText();
