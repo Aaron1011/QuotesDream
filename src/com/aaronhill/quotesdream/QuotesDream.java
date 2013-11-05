@@ -61,7 +61,7 @@ public class QuotesDream extends DreamService {
 		List<Quote> newQuotes = Quote.listAll(Quote.class);
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 		task = new UpdateQuoteTask();
-		task.execute(newQuotes, textView);
+		task.execute(textView);
 
 
 	}

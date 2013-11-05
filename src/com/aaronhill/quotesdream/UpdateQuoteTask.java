@@ -9,17 +9,17 @@ import android.text.Spannable;
 import android.text.style.AbsoluteSizeSpan;
 import android.widget.TextView;
 
-public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
+public class UpdateQuoteTask extends AsyncTask<TextView, Quote, Void> {
 	TextView textView;
 
-	protected Void doInBackground(Object... arg0) {
-		List quotes = (List) arg0[0];
-		this.textView = (TextView) arg0[1];
+	protected Void doInBackground(TextView... arg0) {
+
+		this.textView = (TextView) arg0[0];
 		while (true) {
-			for (Quote quote: (List<Quote>) quotes) {
+			for (Quote quote: (List<Quote>) Quote.listAll(Quote.class)) {
 				publishProgress(quote);
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(2500);
 				} catch (InterruptedException e) {
 					return null;
 				}
