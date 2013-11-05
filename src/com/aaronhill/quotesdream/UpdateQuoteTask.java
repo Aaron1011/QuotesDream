@@ -32,8 +32,9 @@ public class UpdateQuoteTask extends AsyncTask<TextView, Quote, Void> {
 
 		textView.setText(quote.body + "\n--" + quote.author, TextView.BufferType.SPANNABLE);
 		Spannable str = (Spannable) textView.getText();
-		str.setSpan(new AbsoluteSizeSpan(50, true), 0, str.toString().indexOf("\n"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		str.setSpan(new AbsoluteSizeSpan(30, true), str.toString().indexOf("\n") + 1, str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		str.setSpan(new AbsoluteSizeSpan(50, true), 0, str.toString().lastIndexOf("\n"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		str.setSpan(new AbsoluteSizeSpan(30, true), str.toString().lastIndexOf("\n") + 1, str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
 	}
 
 }
