@@ -6,7 +6,8 @@ before_install:
   - tar -zxf android-sdk_r22.3-linux.tgz
   - export ANDROID_HOME=`pwd`/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - echo "y" | android update sdk --filter platform-tools,android-19,extra-android-support --no-ui --force
+  - android list sdk
+  - android update sdk --filter platform-tools,android-19,extra-android-support --no-ui --force
 before_script:
   - android update project -p ./ -t "android-19"
   - ant clean
