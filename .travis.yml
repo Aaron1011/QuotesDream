@@ -4,7 +4,7 @@ before_install:
   - tar -zxf android-sdk_r22.3-linux.tgz
   - export ANDROID_HOME=`pwd`/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - android update sdk --filter 1,2,3,9 --no-ui --force --accept-license
+  - echo "y" | android update sdk --filter 1,2,3,9 --no-ui --force
 before_script:
   - ant clean
   - android update project -p ./
