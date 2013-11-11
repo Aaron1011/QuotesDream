@@ -1,6 +1,5 @@
 package com.aaronhill.quotesdream;
 
-import java.util.Iterator;
 import java.util.List;
 import com.aaronhill.quotesdream.Quote;
 
