@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,11 +26,19 @@ public class QuotesDream extends DreamService {
 	UpdateQuoteTask task;
 
 	List<Quote> QUOTES = new ArrayList<Quote>();
+	SharedPreferences sharedPref;
 
 
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
+		sharedPref = getBaseContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+
+
+		editor.putInt(getString(R.string.quote_display_time), 4000);
+		editor.commit();
+
 		QUOTES.add(new Quote(getBaseContext(), "To be or not to be, that is the question. ", "William Shakespeare"));
 		QUOTES.add(new Quote(getBaseContext(), "As far as the laws of mathematics refer to reality, they are not certain, and as far as they are certain, they do not refer to reality. ", "Alert Einstein"));
 		QUOTES.add(new Quote(getBaseContext(), "The economy depends about as much on economists as the weather does on weather forecasters. ", "Jean-Paul Kauffmann"));
@@ -62,7 +71,7 @@ public class QuotesDream extends DreamService {
 		List<Quote> newQuotes = Quote.listAll(Quote.class);
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 		task = new UpdateQuoteTask();
-		task.execute(textView);
+		task.execute(textView, sharedPref.getInt(getString(R.string.quote_display_time), 1000));
 
 
 	}
