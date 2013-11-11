@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.service.dreams.DreamService;
+import android.util.Log;
 import android.widget.TextView;
 
 public class QuotesDream extends DreamService {
@@ -20,12 +22,12 @@ public class QuotesDream extends DreamService {
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
-		sharedPref = getBaseContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
-		SharedPreferences.Editor editor = sharedPref.edit();
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		/*SharedPreferences.Editor editor = sharedPref.edit();
 
 
 		editor.putInt(getString(R.string.quote_display_time), 4000);
-		editor.commit();
+		editor.commit();*/
 
 		QUOTES.add(new Quote(getBaseContext(), "To be or not to be, that is the question. ", "William Shakespeare"));
 		QUOTES.add(new Quote(getBaseContext(), "As far as the laws of mathematics refer to reality, they are not certain, and as far as they are certain, they do not refer to reality. ", "Alert Einstein"));
@@ -58,7 +60,7 @@ public class QuotesDream extends DreamService {
 
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 		task = new UpdateQuoteTask();
-		task.execute(textView, sharedPref.getInt(getString(R.string.quote_display_time), 1000));
+		task.execute(textView, Integer.parseInt(sharedPref.getString(getString(R.string.quote_display_time), "1000")));
 
 
 	}
