@@ -56,7 +56,6 @@ public class QuotesDream extends DreamService {
 	@Override
 	public void onDreamingStarted() {
 
-		List<Quote> newQuotes = Quote.listAll(Quote.class);
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 		task = new UpdateQuoteTask();
 		task.execute(textView, sharedPref.getInt(getString(R.string.quote_display_time), 1000));
