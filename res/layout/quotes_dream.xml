@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.46"
         android:gravity="center"
-        android:text="Large Text"
+        android:text="Please wait, quotes are being downloaded"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="50sp" />
 
