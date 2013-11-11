@@ -2,24 +2,12 @@ package com.aaronhill.quotesdream;
 
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Parcelable;
 import android.service.dreams.DreamService;
 import android.widget.TextView;
-
-import com.aaronhill.quotesdream.GetQuotesTask;
-import com.aaronhill.quotesdream.Quote;
 
 public class QuotesDream extends DreamService {
 	Quote newQuote;
