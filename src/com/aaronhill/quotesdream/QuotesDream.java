@@ -5,7 +5,10 @@ package com.aaronhill.quotesdream;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.service.dreams.DreamService;
 import android.util.Log;
@@ -36,7 +39,12 @@ public class QuotesDream extends DreamService {
 		for (Quote quote: QUOTES) {
 			quote.save();
 		}
-		new GetQuotesTask(getBaseContext()).execute(20);
+		ConnectivityManager connMgr = (ConnectivityManager)
+		        getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+			new GetQuotesTask(getBaseContext()).execute(20);
+		}
 
 
 		// Exit dream upon user touch
@@ -62,7 +70,6 @@ public class QuotesDream extends DreamService {
 
 		task = new UpdateQuoteTask();
 		task.execute(textView, Integer.parseInt(sharedPref.getString(getString(R.string.quote_display_time), "5")) * 1000);
-
 
 	}
 
