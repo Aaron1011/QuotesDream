@@ -11,7 +11,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.service.dreams.DreamService;
-import android.util.Log;
 import android.widget.TextView;
 
 public class QuotesDream extends DreamService {
