@@ -8,6 +8,7 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.NumberPicker;
+import android.app.backup.BackupManager;
 
 public class NumberPickerPreference extends DialogPreference {
 
@@ -36,8 +37,6 @@ public class NumberPickerPreference extends DialogPreference {
 		if ( which == DialogInterface.BUTTON_POSITIVE ) {
 			this.initialValue = (Integer) picker.getValue();
 			persistInt( initialValue );
-			MyBackupAgent agent = new MyBackupAgent();
-			agent.requestBackup();
 			callChangeListener( initialValue );
 		}
 	}
