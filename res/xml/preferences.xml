@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <EditTextPreference android:dialogTitle="Quote Display Time" android:dialogMessage="Enter the number of seconds to display each quote for" android:key="@string/quote_display_time" android:title="Quote Display Time" android:summary="The time, in seconds, to display each quote for" android:defaultValue="2000"/>
+    <com.aaronhill.quotesdream.NumberPickerPreference android:dialogTitle="Quote Display Time" android:dialogMessage="Enter the number of seconds to display each quote for" android:key="@string/quote_display_time" android:title="Quote Display Time" android:summary="The time, in seconds, to display each quote for" android:defaultValue='2'/>
 
 
 </PreferenceScreen>
