@@ -29,3 +29,5 @@ proguard/
 .idea/
 
 backup_key.xml
+
+build.xml
