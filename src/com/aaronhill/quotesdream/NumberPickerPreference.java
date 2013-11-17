@@ -36,6 +36,8 @@ public class NumberPickerPreference extends DialogPreference {
 		if ( which == DialogInterface.BUTTON_POSITIVE ) {
 			this.initialValue = (Integer) picker.getValue();
 			persistInt( initialValue );
+			MyBackupAgent agent = new MyBackupAgent();
+			agent.requestBackup();
 			callChangeListener( initialValue );
 		}
 	}

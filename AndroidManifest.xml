@@ -16,7 +16,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" android:backupAgent="MyBackupAgent">
         <service
             android:name="com.aaronhill.quotesdream.QuotesDream"
             android:exported="true"
@@ -53,6 +53,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.preference.PreferenceActivity" />
         </activity>
+        <meta-data android:name="com.google.android.backup.api_key" android:value="@string/backup_key" />
     </application>
 
 </manifest>
