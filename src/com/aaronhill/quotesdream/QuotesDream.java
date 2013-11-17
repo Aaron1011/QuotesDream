@@ -68,7 +68,7 @@ public class QuotesDream extends DreamService {
 		final TextView textView = (TextView) findViewById(R.id.textView1);
 
 		task = new UpdateQuoteTask();
-		task.execute(textView, Integer.parseInt(sharedPref.getString(getString(R.string.quote_display_time), "5")) * 1000);
+		task.execute(textView, sharedPref.getInt(getString(R.string.quote_display_time), 5) * 1000);
 
 	}
 
