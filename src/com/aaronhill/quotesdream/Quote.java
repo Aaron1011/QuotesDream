@@ -1,19 +1,16 @@
 package com.aaronhill.quotesdream;
-import android.content.Context;
 
 import com.orm.SugarRecord;
 
 
-public class Quote extends SugarRecord<Quote> {
+public class Quote extends SugarRecord {
 	String body;
 	String author;
 
-	public Quote(Context ctx) {
-		super(ctx);
+	public Quote() {
 	}
 
-	public Quote(Context ctx, String body, String author) {
-		super(ctx);
+	public Quote(String body, String author) {
 		this.body = body;
 		this.author = author;
 	}

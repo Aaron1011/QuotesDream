@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="18"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="24" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -34,10 +34,10 @@
 
         <meta-data
             android:name="DATABASE"
-            android:value="quotes.db" />
+            android:value="quotesNew.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="false" />
@@ -53,7 +53,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.preference.PreferenceActivity" />
         </activity>
-        <meta-data android:name="com.google.android.backup.api_key" android:value="@string/backup_key" />
+        <!--  @string/backup_key -->
+        <!--  <meta-data android:name="com.google.android.backup.api_key" android:value="" /> -->
     </application>
 
 </manifest>

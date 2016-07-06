@@ -16,8 +16,12 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 		this.textView = (TextView) arg0[0];
 		int displayTime = (Integer) arg0[1];
 
-		while (true) {
-			for (Quote quote: (List<Quote>) Quote.listAll(Quote.class)) {
+		while (!isCancelled()) {
+			for (Quote quote: Quote.listAll(Quote.class)) {
+				if (isCancelled()) {
+					return null;
+				}
+
 				publishProgress(quote);
 				try {
 					Thread.sleep(displayTime);
@@ -26,6 +30,7 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 				}
 			}
 		}
+        return null;
 	}
 
 	protected void onProgressUpdate(Quote... values) {
@@ -35,7 +40,6 @@ public class UpdateQuoteTask extends AsyncTask<Object, Quote, Void> {
 		Spannable str = (Spannable) textView.getText();
 		str.setSpan(new AbsoluteSizeSpan(50, true), 0, str.toString().lastIndexOf("\n"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		str.setSpan(new AbsoluteSizeSpan(30, true), str.toString().lastIndexOf("\n") + 1, str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
 	}
 
 }

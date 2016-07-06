@@ -31,9 +31,9 @@ public class QuotesDream extends DreamService {
 		editor.putInt(getString(R.string.quote_display_time), 4000);
 		editor.commit();*/
 
-		QUOTES.add(new Quote(getBaseContext(), "To be or not to be, that is the question. ", "William Shakespeare"));
-		QUOTES.add(new Quote(getBaseContext(), "As far as the laws of mathematics refer to reality, they are not certain, and as far as they are certain, they do not refer to reality. ", "Alert Einstein"));
-		QUOTES.add(new Quote(getBaseContext(), "The economy depends about as much on economists as the weather does on weather forecasters. ", "Jean-Paul Kauffmann"));
+		QUOTES.add(new Quote("To be or not to be, that is the question. ", "William Shakespeare"));
+		QUOTES.add(new Quote("As far as the laws of mathematics refer to reality, they are not certain, and as far as they are certain, they do not refer to reality. ", "Alert Einstein"));
+		QUOTES.add(new Quote("The economy depends about as much on economists as the weather does on weather forecasters. ", "Jean-Paul Kauffmann"));
 
 		for (Quote quote: QUOTES) {
 			quote.save();
@@ -52,14 +52,6 @@ public class QuotesDream extends DreamService {
 		setFullscreen(true);
 		// Set the dream layout
 		setContentView(R.layout.quotes_dream);
-
-
-
-		/*Quote quote = new Quote(getBaseContext(), "This is a blah", "Aaron");
-		quote.save();
-
-		Quote quote2 = new Quote(getBaseContext(), "This is a second quote", "Anonymous");
-		quote2.save();*/
 	}
 
 	@Override

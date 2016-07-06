@@ -1,35 +1,33 @@
 package com.aaronhill.quotesdream;
 
-
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.Html;
 import android.util.Log;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.Void;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 	private Context myCtx;
 	private Quote quote;
-	private String quoteUrl = "http://www.iheartquotes.com/api/v1/random?format=json&source=science";
+	private String quoteUrl = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=%d";
 
 	@Override
 	protected Void doInBackground(Integer... a) {
-		int numQuotes = a[0];
-		for (int i = 0; i < numQuotes; i++) {
-			Object result = parseJSON(downloadUrl(quoteUrl));
-			if (result != null) {
-				quote = (Quote) result;
-				Log.d("Quote", quote.toString());
-				quote.save();
-			}
+		try {
+			parseJSON(downloadUrl(String.format(quoteUrl, a[0])));
+		} catch (JSONException e) {
+			Log.e("Quote", "Error parsing quote", e);
 		}
 /*		QuotesDbHelper helper = new QuotesDbHelper(myCtx);
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -43,26 +41,16 @@ public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 
 	}
 
-	private Object parseJSON(String json) {
-		try {
-			Log.d("JSON", json.toString());
-			JSONObject jObject = new JSONObject(json);
-			String body = jObject.getString("quote");
-			Quote quote = new Quote(myCtx);
-			String[] parsed = body.split("--");
-			quote.body = parsed[0];
-			if (parsed.length == 2) {
-				quote.author = parsed[1];
-			}
-			else {
-				quote.author = "Anonymous";
-			}
-			return quote;
+	private void parseJSON(String json) throws JSONException {
+		Log.d("JSON", json.toString());
+		JSONArray array = new JSONArray(json);
+		for (int i = 0; i < array.length(); i++) {
+			JSONObject quoteJson = array.getJSONObject(i);
+
+			String author = quoteJson.getString("title");
+			String body = Html.fromHtml(quoteJson.getString("content")).toString();
+			new Quote(body, author).save();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	private String downloadUrl(String url) {
@@ -109,6 +97,7 @@ public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 	}
 
 	public GetQuotesTask (Context ctx) {
+		android.os.Debug.waitForDebugger();
 	    myCtx = ctx;
 	}
 
