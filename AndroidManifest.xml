@@ -21,7 +21,7 @@
             android:name="com.aaronhill.quotesdream.QuotesDream"
             android:exported="true"
             android:icon="@drawable/ic_launcher"
-            android:label="My Quotes Dream" >
+            android:label="Quotes Dream" >
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
 

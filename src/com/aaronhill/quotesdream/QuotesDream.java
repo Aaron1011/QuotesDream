@@ -42,7 +42,7 @@ public class QuotesDream extends DreamService {
 		        getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
-			new GetQuotesTask(getBaseContext()).execute(20);
+			new GetQuotesTask().execute(20);
 		}
 
 

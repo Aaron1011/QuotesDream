@@ -96,9 +96,7 @@ public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 		return null;
 	}
 
-	public GetQuotesTask (Context ctx) {
-		android.os.Debug.waitForDebugger();
-	    myCtx = ctx;
+	public GetQuotesTask() {
 	}
 
 }
