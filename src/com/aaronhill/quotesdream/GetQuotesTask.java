@@ -1,7 +1,7 @@
 package com.aaronhill.quotesdream;
 
-import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.text.Html;
 import android.util.Log;
 import org.json.JSONArray;
@@ -14,11 +14,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
-	private Context myCtx;
 	private Quote quote;
 	private String quoteUrl = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=%d";
 
@@ -48,7 +45,7 @@ public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 			JSONObject quoteJson = array.getJSONObject(i);
 
 			String author = quoteJson.getString("title");
-			String body = Html.fromHtml(quoteJson.getString("content")).toString();
+            String body = Html.fromHtml(quoteJson.getString("content")).toString().replaceAll("([\n])*\\z", "");
 			new Quote(body, author).save();
 		}
 	}
@@ -95,8 +92,4 @@ public class GetQuotesTask extends AsyncTask<Integer, Void, Void> {
 		}
 		return null;
 	}
-
-	public GetQuotesTask() {
-	}
-
 }

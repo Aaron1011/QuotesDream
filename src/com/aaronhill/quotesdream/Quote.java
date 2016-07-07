@@ -14,5 +14,4 @@ public class Quote extends SugarRecord {
 		this.body = body;
 		this.author = author;
 	}
-
 }

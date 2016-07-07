@@ -9,6 +9,8 @@ public class QuotesPreferenceActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		this.setTitle("Settings");
+
 		getFragmentManager().beginTransaction()
         		.replace(android.R.id.content, new SettingsFragment())
         		.commit();

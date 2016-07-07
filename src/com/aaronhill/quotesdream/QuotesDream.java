@@ -1,10 +1,5 @@
 package com.aaronhill.quotesdream;
 
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -13,8 +8,10 @@ import android.preference.PreferenceManager;
 import android.service.dreams.DreamService;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuotesDream extends DreamService {
-	Quote newQuote;
 	UpdateQuoteTask task;
 
 	List<Quote> QUOTES = new ArrayList<Quote>();
@@ -24,7 +21,7 @@ public class QuotesDream extends DreamService {
 	@Override
     public void onAttachedToWindow() {
 		super.onAttachedToWindow();
-		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+ 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		/*SharedPreferences.Editor editor = sharedPref.edit();
 
 
@@ -45,9 +42,6 @@ public class QuotesDream extends DreamService {
 			new GetQuotesTask().execute(20);
 		}
 
-
-		// Exit dream upon user touch
-		setInteractive(true);
 	   // Hide system UI
 		setFullscreen(true);
 		// Set the dream layout
