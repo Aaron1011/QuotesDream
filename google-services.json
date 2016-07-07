@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "463730786997",
+    "firebase_url": "https://quotes-dream.firebaseio.com",
+    "project_id": "quotes-dream",
+    "storage_bucket": "quotes-dream.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463730786997:android:071e46dfab23f3e0",
+        "android_client_info": {
+          "package_name": "com.aaronhill.quotesdream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463730786997-4nfgnjbs4qu3u8rsu2hd7b6490572ila.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk0Mi_UxZwH4umGOA1LGoEZjDk1C6kW-w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
